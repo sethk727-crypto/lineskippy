@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>NEw lineleap</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
+
+
+  <!-- Main pass card -->
+  <div class="card">
+    <h2>Champs Downtown<br/>LineSkip</h2>
+    <div class="qty">Qty: 1</div>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=LineSkipPass" alt="QR">
+    </div>
+    <div class="details">
+      <p><strong>Passholder</strong><br/>Seth King</p>
+      <p><strong>Expires at</strong><br/>Sep 16, 4:00 AM</p>
+    </div>
+  </div>
+
+  <p class="instruction">Show doorman pass to redeem.<br/>Only doorman should redeem.</p>
+  <button class="btn gray" onclick="openStaff()">I am the bartender or venue staff</button>
+  <button class="btn blue">How to redeem this pass</button>
+
+  <!-- Staff modal -->
+  <div id="staff" class="modal">
+    <div class="qr-box">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=Redeem" alt="QR">
+      <div class="time" id="liveTime"></div>
+    </div>
+
+    <div class="emoji-wrap">
+      <span class="emoji">🍄</span>
+      <div class="divider"></div>
+      <span class="emoji">🍤</span>
+    </div>
+
+    <div class="warning">⚠ This action cannot be undone</div>
+    <button class="btn blue" onclick="startFlow()">Redeem</button>
+    <button class="btn gray" onclick="closeStaff()">Cancel</button>
+  </div>
+
+  <!-- Fullscreen animation flow -->
+  <div id="anim" class="animation">
+    <!-- Loader arc -->
+    <svg id="loaderArc" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" stroke="#fff" stroke-width="8" fill="none"
+              stroke-linecap="round" stroke-dasharray="250" stroke-dashoffset="250"/>
+    </svg>
+
+    <!-- Checkmark -->
+    <svg id="check" viewBox="0 0 52 52" style="display:none">
+      <circle cx="26" cy="26" r="24" fill="none" stroke="#fff" stroke-width="4"/>
+      <path d="M14 27 L22 35 L38 18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Pieces after check breaks -->
+    <div id="pieces" class="pieces">
+      <div></div><div></div>
+    </div>
+
+    <!-- FINAL LL IMAGE (exact like your screenshot) -->
+    <img id="ll" alt="LL" style="display:none;width:90px;height:auto"/>
+
+    <div id="tag" class="tagline">Fun, Faster.</div>
+  </div>
+
+  <!-- No passes -->
+  <div id="empty" class="empty">
+    <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" width="80" alt="">
+    <h2>You Have No Passes</h2>
+  </div>
+  <button id="buy" class="buy">Buy Another Pass</button>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
